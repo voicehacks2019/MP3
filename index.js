@@ -78,7 +78,7 @@ const NounLaunchIntentHandler0 = {
         const resAnswer = checkIt(handlerInput.requestEnvelope.request.intent.slots.Animal.value,'cat' );
         animalCurr = 'dog';
         console.log(resAnswer);
-        console.log(resAnswer + '<audio src="soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_01"/> What is it?');
+        console.log(resAnswer + 'Welcome to Animals and Actions. You will say what sound I play. <audio src="soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_01"/> What is it?');
         return response.speak(resAnswer + '<audio src="soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_01"/> What is it?').withShouldEndSession(false).getResponse();
     }
 };
