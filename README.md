@@ -1,5 +1,5 @@
 # VoiceHacks2k19
-## Animals and Actions --kids' vocabulary assessment
+## Animals and Actions 
 
 ### Tagline for the project: An educational listening game for assessing children’s vocabulary
 ### It’s built with: Amazon Alexa Developer Console, Node.js (JavaScript)
