@@ -69,12 +69,14 @@ const NounLaunchIntentHandler0 = {
         const attributes = handlerInput.attributesManager.getSessionAttributes();
         const response = handlerInput.responseBuilder;
         attributes.state = 'Dog';
+        
         askQuestion(handlerInput);
         handlerInput.attributesManager.setSessionAttributes(attributes);
         const item = attributes.quizItem;
         const property = attributes.quizProperty;
 
         const resAnswer = checkIt(handlerInput.requestEnvelope.request.intent.slots.Animal.value,'cat' );
+        animalCurr = 'dog';
         console.log(resAnswer);
         console.log(resAnswer + '<audio src="soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_01"/> What is it?');
         return response.speak(resAnswer + '<audio src="soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_01"/> What is it?').withShouldEndSession(false).getResponse();
@@ -91,15 +93,18 @@ const NounLaunchIntentHandler1 = {
         const attributes = handlerInput.attributesManager.getSessionAttributes();
         const response = handlerInput.responseBuilder;
         attributes.state = 'Chicken';
+        
         askQuestion(handlerInput);
         handlerInput.attributesManager.setSessionAttributes(attributes);
         const item = attributes.quizItem;
         const property = attributes.quizProperty;
 
         const resAnswer = checkIt(handlerInput.requestEnvelope.request.intent.slots.Animal.value,'dog' );
+        animalCurr = 'chicken';
     
+        console.log(resAnswer);
         return handlerInput.responseBuilder
-            .speak(resAnswer + '<audio src=“soundbank://soundlibrary/animals/amzn_sfx_chicken_cluck_01”/> What is it?')
+            .speak(resAnswer + '<audio src="soundbank://soundlibrary/animals/amzn_sfx_chicken_cluck_01"/> What is it?')
             .withShouldEndSession(false)
             .getResponse();     
     }
@@ -140,15 +145,17 @@ const NounLaunchIntentHandler2 = {
     handle(handlerInput){
         const attributes = handlerInput.attributesManager.getSessionAttributes();
         const response = handlerInput.responseBuilder;
+        
         attributes.state = 'End';
         askQuestion(handlerInput);
         handlerInput.attributesManager.setSessionAttributes(attributes);
         const item = attributes.quizItem;
         const property = attributes.quizProperty;
         const resAnswer = checkIt(handlerInput.requestEnvelope.request.intent.slots.Animal.value,'chicken');
+        animalCurr = 'sheep';
         return handlerInput.responseBuilder
-            .speak(resAnswer + '<audio src=“soundbank://soundlibrary/animals/amzn_sfx_sheep_bleat_02”/> What is it?')
-            .reprompt('<audio src=“soundbank://soundlibrary/animals/amzn_sfx_sheep_bleat_02”/> What is it?')
+            .speak(resAnswer + '<audio src="soundbank://soundlibrary/animals/amzn_sfx_sheep_bleat_02"/> What is it?')
+            .reprompt('<audio src="soundbank://soundlibrary/animals/amzn_sfx_sheep_bleat_02"/> What is it?')
             .withShouldEndSession(false)
             .getResponse();         
     }
@@ -208,7 +215,7 @@ function checkIt(input, output){
         return "That's correct. Good job.";
     }
     else{
-        return "Almost there." + "a " + animalCurr + " makes that sound.";
+        return "Almost there, " + "a " + animalCurr + " makes that sound.";
     }
 }
 
